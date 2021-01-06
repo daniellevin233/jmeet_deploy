@@ -119,7 +119,7 @@ const SignUpWizard = () => {
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(signupData),
 		};
-		fetch(`${base_url} + signup`, requestOptions)
+		fetch(`${base_url} + /signup`, requestOptions)
 			.then((response) => response.json())
 			.then((data) => setData(data))
 			.then(() => console.log("dddd:", data));
