@@ -8,7 +8,7 @@ import EducationInfo from "./EducationInfo";
 import { useFetch } from "../../hooks/useFetch";
 
 const SignUpWizard = () => {
-  const base_url = "https://main.d34t4lmdyc81y3.amplifyapp.com";
+  const base_url = "https://cors-anywhere.herokuapp.com/https://main.d34t4lmdyc81y3.amplifyapp.com";
   const [activeStep, setActiveStep] = useState(0);
   const [errors, setErrors] = useState({});
   // using useFetch hook to get the data from url
