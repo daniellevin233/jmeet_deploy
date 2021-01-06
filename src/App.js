@@ -5,7 +5,7 @@ import { SignUpWizard } from "./components/wizard";
 import AboutUs from "./components/AboutUs";
 import Home from "./components/Home";
 import Login from "./components/Login";
-import OurVision from "./components/OurVision";
+import TheTeam from "./components/TheTeam";
 import jmeetLogo from "../src/images/jmeet.png";
 import "./App.css";
 
@@ -33,9 +33,9 @@ const App = () => {
                   About Us
                 </Nav.Link>
               </NavItem>
-              <NavItem eventkey={3} href="/our-vision">
-                <Nav.Link as={Link} to="/our-vision">
-                  Our Vision
+              <NavItem eventkey={3} href="/the-team">
+                <Nav.Link as={Link} to="/the-team">
+                  The Team
                 </Nav.Link>
               </NavItem>
               <NavItem eventkey={4} href="/login">
@@ -51,7 +51,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/about-us" component={AboutUs} />
-          <Route path="/our-vision" component={OurVision} />
+          <Route path="/the-team" component={TheTeam} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={SignUpWizard} />
           <Route
