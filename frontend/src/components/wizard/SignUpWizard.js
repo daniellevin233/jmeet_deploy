@@ -5,15 +5,40 @@ import IdInfo from "./IdInfo";
 import PersonalInfo from "./PersonalInfo";
 import ValidationCode from "./ValidationCode";
 import EducationInfo from "./EducationInfo";
+import Matches from "./Matches";
 import { useFetch } from "../../hooks/useFetch";
+import TabsPage from "./TabsPage";
 
 const SignUpWizard = () => {
+  const temp = {
+    "a@gmail.com": {
+      firstName: "Gil Shwartz",
+      age: 29,
+    },
+    "b@walla": {
+      firstName: "Inbar Bob",
+      age: 26,
+    },
+    "c@walla": {
+      firstName: "daniel levin",
+      age: 22,
+    },
+    "d@walla": {
+      firstName: "noam del",
+      age: 23,
+    },
+  };
+  // const proxyurl = "https://cors-anywhere.herokuapp.com/";
   const base_url = "https://main.d34t4lmdyc81y3.amplifyapp.com";
   const [activeStep, setActiveStep] = useState(0);
   const [errors, setErrors] = useState({});
   // using useFetch hook to get the data from url
   // const [{ data, error, loading }, callApi] = useFetch();
-  const [data, setData] = useState();
+
+  const [data, setData] = useState(null);
+  // const [error, setError] = useState(null);
+  // const [loading, setLoading] = useState(false);
+
   const [signupData, setSignupData] = useState({
     firstName: "",
     lastName: "",
@@ -34,6 +59,7 @@ const SignUpWizard = () => {
     year: 0,
     basketball: true,
   });
+  const [isMatch, setIsMatch] = useState(false);
 
   const steps = [
     "Just a few questions...",
@@ -99,30 +125,44 @@ const SignUpWizard = () => {
 
     if (!isFormValid()) return;
 
-    /*if (activeStep === steps.length - 1) {
-      callApi(`${base_url}/signup/post`, {
+    if (activeStep === steps.length - 1) {
+      setIsMatch(true);
+      console.log("1", signupData);
+      const requestOptions = {
         method: "POST",
+        // mode: "no-cors",
+        // credentials: "include",
         headers: {
-          Accept: "application/json",
           "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
         },
         body: JSON.stringify(signupData),
-      }).then(() => {
-        console.log("response from post- DATA:", data);
-        alert("Form Submitted");
-      });
-    }*/
+      };
+      fetch("https://main.d34t4lmdyc81y3.amplifyapp.com/signup", requestOptions)
+        .then((response) => response.json())
+        .then((data) =>
+          console.log("Response from flask:", JSON.stringify(data))
+        )
+        .catch((e) => console.log("Error:", e));
 
-	if (activeStep === steps.length - 1) {
-		const requestOptions = {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify(signupData),
-		};
-		fetch(`${base_url} + /signup`, requestOptions)
-			.then((response) => response.json())
-			.then((data) => setData(data))
-			.then(() => console.log("dddd:", data));
+      // .then((response) => setData(response))
+      // .then(() => console.log("response from flask:", data));
+
+      // callApi(`${base_url}/signup/post`, {
+      //   method: "POST",
+      //   headers: {
+      //     Accept: "application/json",
+      //     "Access-Control-Allow-Origin": "http://127.0.0.1:3000",
+      //     "Access-Control-Allow-Methods": "POST",
+      //     "Access-Control-Allow-Headers": "Content-Type",
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(signupData),
+      // }).then(() => {
+      //   console.log("response from post- DATA:", data);
+      //   setIsMatch(true);
+      //   alert("Form Submitted");
+      // });
     } else {
       setActiveStep((prevState) => prevState + 1);
     }
@@ -227,7 +267,7 @@ const SignUpWizard = () => {
     }
   };
 
-  return (
+  return !isMatch ? (
     <Form className="content" onSubmit={handleFormSubmit}>
       <h2>{steps[activeStep]}</h2>
       {showActiveStep()}
@@ -242,6 +282,8 @@ const SignUpWizard = () => {
         {activeStep === steps.length - 1 ? "Submit" : "Next >"}
       </Button>
     </Form>
+  ) : (
+    <TabsPage data={temp} />
   );
 };
 

@@ -6,7 +6,7 @@ const AboutUs = () => {
   return (
     <div className="content">
       <h3>
-        <stron>About Us</stron>
+        <strong>About Us</strong>
       </h3>
       <hr />
       <Scrollbars style={{ width: "100%", height: "400px" }}>

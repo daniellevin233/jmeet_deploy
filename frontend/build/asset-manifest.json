@@ -1,0 +1,41 @@
+{
+  "files": {
+    "main.css": "/static/css/main.55d6174d.chunk.css",
+    "main.js": "/static/js/main.86413240.chunk.js",
+    "main.js.map": "/static/js/main.86413240.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.00d91e6a.js",
+    "runtime-main.js.map": "/static/js/runtime-main.00d91e6a.js.map",
+    "static/css/2.20aa2d7b.chunk.css": "/static/css/2.20aa2d7b.chunk.css",
+    "static/js/2.95ebf431.chunk.js": "/static/js/2.95ebf431.chunk.js",
+    "static/js/2.95ebf431.chunk.js.map": "/static/js/2.95ebf431.chunk.js.map",
+    "static/js/3.c673b098.chunk.js": "/static/js/3.c673b098.chunk.js",
+    "static/js/3.c673b098.chunk.js.map": "/static/js/3.c673b098.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.20aa2d7b.chunk.css.map": "/static/css/2.20aa2d7b.chunk.css.map",
+    "static/css/main.55d6174d.chunk.css.map": "/static/css/main.55d6174d.chunk.css.map",
+    "static/js/2.95ebf431.chunk.js.LICENSE.txt": "/static/js/2.95ebf431.chunk.js.LICENSE.txt",
+    "static/media/Arts.bc560ac5.png": "/static/media/Arts.bc560ac5.png",
+    "static/media/Basketball.a3331102.png": "/static/media/Basketball.a3331102.png",
+    "static/media/Gaming.f60eb17c.png": "/static/media/Gaming.f60eb17c.png",
+    "static/media/Gardening.c42e5705.png": "/static/media/Gardening.c42e5705.png",
+    "static/media/Music.ab35ae4d.png": "/static/media/Music.ab35ae4d.png",
+    "static/media/Party.530f5e51.png": "/static/media/Party.530f5e51.png",
+    "static/media/Study group.9ce91ae0.png": "/static/media/Study group.9ce91ae0.png",
+    "static/media/Traveling.e75d097e.png": "/static/media/Traveling.e75d097e.png",
+    "static/media/danielImg.9bd614d0.jpeg": "/static/media/danielImg.9bd614d0.jpeg",
+    "static/media/female.9fcada3e.png": "/static/media/female.9fcada3e.png",
+    "static/media/gilImg.bf29b020.jpeg": "/static/media/gilImg.bf29b020.jpeg",
+    "static/media/hadasImg.2727f13b.jpeg": "/static/media/hadasImg.2727f13b.jpeg",
+    "static/media/inbarImg.79f2db34.jpeg": "/static/media/inbarImg.79f2db34.jpeg",
+    "static/media/index.css": "/static/media/jmeet-background.c969c541.png",
+    "static/media/noamImg.6eefe984.jpeg": "/static/media/noamImg.6eefe984.jpeg",
+    "static/media/whatever.fc8f4c3b.png": "/static/media/whatever.fc8f4c3b.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.00d91e6a.js",
+    "static/css/2.20aa2d7b.chunk.css",
+    "static/js/2.95ebf431.chunk.js",
+    "static/css/main.55d6174d.chunk.css",
+    "static/js/main.86413240.chunk.js"
+  ]
+}

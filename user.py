@@ -1,11 +1,11 @@
-# from flask import request
-# from flask_restful import Resource, reqparse
+from flask import request, jsonify
+from flask_restful import Resource, reqparse
 import sqlite3
-# import security
+import security
 
 
 class User:
-    def _init_(self, id, name, last, password, confirmPassword, mail, terms, updates, validationCode, gender,
+    def __init__(self, id, name, last, password, confirmPassword, mail, terms, updates, validationCode, gender,
                  age, neighborhood, image, degree, faculty, major, secondMajor, year, hobbies):
         self.id = id
         self.name = name
@@ -48,83 +48,85 @@ class User:
         connection.close()
         return user
 
-#
-# class UserSignUp(Resource):
-#     # Parse every field?
-#     # parser = reqparse.RequestParser()
-#     # parser.add_argument('mail',
-#     #                     type=str,
-#     #                     required=True,
-#     #                     help="User should have an email"
-#     #                     )
-#
-#     def post(self):
-#         # data = UserSignUp.parser
-#         connection = sqlite3.connect('data.db')
-#         cursor = connection.cursor()
-#         request_data = request.get_json()
-#         # Check user isn't already exist:
-#         if User.find_by_mail(request_data['email']):
-#             return {"message": "A user with that mail already exists!"}, 400
-#         if not security.authorize_huji_mail(request_data['email']):
-#             return {"message": "Only huji students can sign up!"}, 400
-#
-#         query = "INSERT INTO users VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-#         # Hobbies: study groups, basketball, gardening, arts, party, gaming, music, yoga, soccer, traveling.
-#         cursor.execute(query,
-#                        (
-#                         request_data["firstName"],
-#                         request_data["lastName"],
-#                         request_data["password"],
-#                         request_data["confirmPassword"],
-#                         request_data["email"],
-#                         request_data["terms"],
-#                         request_data["updates"],
-#                         request_data["validationCode"],
-#                         request_data["gender"],
-#                         request_data["age"],
-#                         request_data["neighborhood"],
-#                         request_data["image"],
-#                         request_data["degree"],
-#                         request_data["faculty"],
-#                         request_data["major"],
-#                         request_data["secondMajor"],
-#                         request_data["year"],
-#                         request_data["basketball"]
-#                        ))
-#
-#         connection.commit()
-#         connection.close()
-#
-#         return {"message": "User signed up successfully!"}, 201
-#
-#     def get(self):
-#         connection = sqlite3.connect('data.db')
-#         cursor = connection.cursor()
-#         query = "SELECT * FROM users"
-#         res = cursor.execute(query)
-#         users = []
-#         for row in res:
-#             users.append({
-#                 'id': row[0],
-#                 'firstName': row[1],
-#                 'lastName': row[2],
-#                 'password': row[3],
-#                 'confirmPassword': row[4],
-#                 'mail': row[5],
-#                 'terms': row[6],
-#                 'updates': row[7],
-#                 'validationCode': row[8],
-#                 'gender': row[9],
-#                 'age': row[10],
-#                 'neighborhood': row[11],
-#                 'image': row[12],
-#                 'degree': row[13],
-#                 'faculty': row[14],
-#                 'major': row[15],
-#                 'secondMajor': row[16],
-#                 'year': row[17],
-#                 'basketball': row[18],
-#             })
-#         connection.close()
-#         return {'users': users}
+
+class UserSignUp(Resource):
+    # Parse every field?
+    # parser = reqparse.RequestParser()
+    # parser.add_argument('mail',
+    #                     type=str,
+    #                     required=True,
+    #                     help="User should have an email"
+    #                     )
+
+    def post(self):
+        # return "fuckS"
+        # # data = UserSignUp.parser
+        connection = sqlite3.connect('data.db')
+        cursor = connection.cursor()
+        request_data = request.get_json()
+        # Check user isn't already exist:
+        if User.find_by_mail(request_data['email']):
+            return {"message": "A user with that mail already exists!"}, 400
+        if not security.authorize_huji_mail(request_data['email']):
+            return {"message": "Only huji students can sign up!"}, 400
+
+        query = "INSERT INTO users VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+        # Hobbies: study groups, basketball, gardening, arts, party, gaming, music, yoga, soccer, traveling.
+        cursor.execute(query,
+                       (
+                        request_data["firstName"],
+                        request_data["lastName"],
+                        request_data["password"],
+                        request_data["confirmPassword"],
+                        request_data["email"],
+                        request_data["terms"],
+                        request_data["updates"],
+                        request_data["validationCode"],
+                        request_data["gender"],
+                        request_data["age"],
+                        request_data["neighborhood"],
+                        request_data["image"],
+                        request_data["degree"],
+                        request_data["faculty"],
+                        request_data["major"],
+                        request_data["secondMajor"],
+                        request_data["year"],
+                        request_data["basketball"]
+                       ))
+
+        connection.commit()
+        connection.close()
+
+        return {"message": "User signed up successfully!"}, 201
+
+    def get(self):
+        return {"message": "no get"}
+        # connection = sqlite3.connect('data.db')
+        # cursor = connection.cursor()
+        # query = "SELECT * FROM users"
+        # res = cursor.execute(query)
+        # users = []
+        # for row in res:
+        #     users.append({
+        #         'id': row[0],
+        #         'firstName': row[1],
+        #         'lastName': row[2],
+        #         'password': row[3],
+        #         'confirmPassword': row[4],
+        #         'mail': row[5],
+        #         'terms': row[6],
+        #         'updates': row[7],
+        #         'validationCode': row[8],
+        #         'gender': row[9],
+        #         'age': row[10],
+        #         'neighborhood': row[11],
+        #         'image': row[12],
+        #         'degree': row[13],
+        #         'faculty': row[14],
+        #         'major': row[15],
+        #         'secondMajor': row[16],
+        #         'year': row[17],
+        #         'basketball': row[18],
+        #     })
+        # connection.close()
+        # return {'users': users}
