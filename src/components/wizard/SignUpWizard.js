@@ -12,7 +12,8 @@ const SignUpWizard = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [errors, setErrors] = useState({});
   // using useFetch hook to get the data from url
-  const [{ data, error, loading }, callApi] = useFetch();
+  // const [{ data, error, loading }, callApi] = useFetch();
+  const [data, setData] = useState();
   const [signupData, setSignupData] = useState({
     firstName: "",
     lastName: "",
@@ -98,7 +99,7 @@ const SignUpWizard = () => {
 
     if (!isFormValid()) return;
 
-    if (activeStep === steps.length - 1) {
+    /*if (activeStep === steps.length - 1) {
       callApi(`${base_url}/signup/post`, {
         method: "POST",
         headers: {
@@ -110,6 +111,19 @@ const SignUpWizard = () => {
         console.log("response from post- DATA:", data);
         alert("Form Submitted");
       });
+    }*/
+
+	if (activeStep === steps.length - 1) {
+		setIsMatch(true);
+		const requestOptions = {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(signupData),
+		};
+		fetch(`${base_url} + signup`, requestOptions)
+			.then((response) => response.json())
+			.then((data) => setData(data))
+			.then(() => console.log("dddd:", data));
     } else {
       setActiveStep((prevState) => prevState + 1);
     }
