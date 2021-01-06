@@ -1,10 +1,10 @@
 import { Row, Col, Image } from "react-bootstrap";
 
-import hadasImg from "../images/hadasImg.jpeg";
-import gilImg from "../images/gilImg.jpeg";
-import inbarImg from "../images/inbarImg.jpeg";
-import danielImg from "../images/danielImg.jpeg";
-import noamImg from "../images/noamImg.jpeg";
+import hadasImg from "../images/hadasImg.png";
+import gilImg from "../images/gilImg.png";
+import inbarImg from "../images/inbarImg.png";
+import danielImg from "../images/danielImg.png";
+import noamImg from "../images/noamImg.png";
 
 const TheTeam = () => {
   return (
