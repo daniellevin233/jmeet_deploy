@@ -7,8 +7,8 @@ import sqlite3
 from user import User
 import security
 
-app = Flask(__name__, static_folder='build', static_url_path='')
-api = Api(app)
+app = Flask(__name__)#, static_folder='build', static_url_path='')
+# api = Api(app)
 CORS(app)
 
 
