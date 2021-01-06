@@ -16,7 +16,7 @@ const PersonalInfo = ({
     <>
       <Row>
         <Col>
-          <FormLabel>First Name</FormLabel>
+          <FormLabel>first name</FormLabel>
           <Form.Control
             type="text"
             name="firstName"
@@ -27,7 +27,7 @@ const PersonalInfo = ({
           <p style={{ fontSize: "10px", color: "red" }}>{errors.firstName}</p>
         </Col>
         <Col>
-          <FormLabel>Last Name</FormLabel>
+          <FormLabel>last name</FormLabel>
           <Form.Control
             type="text"
             name="lastName"
@@ -38,11 +38,11 @@ const PersonalInfo = ({
           <p style={{ fontSize: "10px", color: "red" }}>{errors.lastName}</p>
         </Col>
       </Row>
-      <FormLabel>Email Address</FormLabel>
+      <FormLabel>Email address (Please enter your university Email)</FormLabel>
       <Form.Control
         type="text"
         name="email"
-        placeholder="Please fill your Email"
+        placeholder="Please fill your HUJI Email"
         value={email}
         onChange={onInputChanged}
       />
@@ -60,7 +60,7 @@ const PersonalInfo = ({
           <p style={{ fontSize: "10px", color: "red" }}>{errors.password}</p>
         </Col>
         <Col>
-          <FormLabel>Confirm Password</FormLabel>
+          <FormLabel>Confirm password</FormLabel>
           <Form.Control
             type="password"
             name="confirmPassword"

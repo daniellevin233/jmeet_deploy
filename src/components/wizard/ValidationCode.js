@@ -17,7 +17,7 @@ const ValidationCode = ({ validationCode, onInputChanged, errors }) => {
       <Form>
         <Row>
           <Col>
-            <FormLabel>Confirmation Code</FormLabel>
+            <FormLabel>Confirmation code</FormLabel>
             <Form.Control
               type="text"
               name="validationCode"

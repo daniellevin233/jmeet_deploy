@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { Form, FormLabel, Row, Col, FormGroup } from "react-bootstrap";
+import { Form, FormLabel, Row, Col } from "react-bootstrap";
 
 const EducationInfo = ({
   degree,
@@ -34,12 +34,35 @@ const EducationInfo = ({
         <Col>
           <FormLabel>Faculty</FormLabel>
           <Form.Control
-            type="text"
-            name="faculty"
-            placeholder="Please fill your faculty"
-            value={faculty}
+            as="select"
+            defaultValue="undergraduate"
             onChange={onInputChanged}
-          />
+            name="faculty"
+            value={faculty}
+          >
+            <option hidden>Choose Faculty...</option>
+            <option value="humanities">Humanities</option>
+            <option value="socialsciences">Social Sciences</option>
+            <option value="businessadministration">
+              Business Administration
+            </option>
+            <option value="socialworkandsocialwelfare">
+              Social Work and Social Welfare
+            </option>
+            <option value="education">Education</option>
+            <option value="medicine">Medicine</option>
+            <option value="dentistry">Dentistry</option>
+            <option value="engineeringandcomputerscience">
+              Engineering and Computer Science
+            </option>
+            <option value="lawandinstituteofcriminology">
+              Law and Institute of Criminology
+            </option>
+            <option value="mathematicsandnaturalsciences">
+              Mathematics and Natural Sciences
+            </option>
+            <option value="elsc">ELSC</option>
+          </Form.Control>
           <p style={{ color: "red" }}>{errors.faculty}</p>
         </Col>
       </Row>

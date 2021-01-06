@@ -8,6 +8,7 @@ import EducationInfo from "./EducationInfo";
 import { useFetch } from "../../hooks/useFetch";
 
 const SignUpWizard = () => {
+  const base_url = "https://jlm-jmeet.herokuapp.com/";
   const [activeStep, setActiveStep] = useState(0);
   const [errors, setErrors] = useState({});
   // using useFetch hook to get the data from url
@@ -98,14 +99,15 @@ const SignUpWizard = () => {
     if (!isFormValid()) return;
 
     if (activeStep === steps.length - 1) {
-      callApi("/signup", {
+      callApi(`${base_url}/signup/post`, {
         method: "POST",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: signupData,
+        body: JSON.stringify(signupData),
       }).then(() => {
+        console.log("response from post- DATA:", data);
         alert("Form Submitted");
       });
     } else {
@@ -211,11 +213,11 @@ const SignUpWizard = () => {
         throw Error("Unknown step");
     }
   };
+
   return (
     <Form className="content" onSubmit={handleFormSubmit}>
       <h2>{steps[activeStep]}</h2>
       {showActiveStep()}
-
       <Button
         variant="info"
         disabled={activeStep === 0}
@@ -223,7 +225,6 @@ const SignUpWizard = () => {
       >
         {"< Back"}
       </Button>
-
       <Button variant="primary" type="submit">
         {activeStep === steps.length - 1 ? "Submit" : "Next >"}
       </Button>

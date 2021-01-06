@@ -1,9 +1,5 @@
 import { Scrollbars } from "rc-scrollbars";
-import { Row, Col, Image } from "react-bootstrap";
 
-import yogaImg from "../images/Yoga.png";
-import hadasImg from "../images/hadas.jpeg";
-import gilImg from "../images/gil.png";
 import "./AboutUs.css";
 
 const AboutUs = () => {
@@ -74,50 +70,7 @@ const AboutUs = () => {
           thoughts. You can send a comment on the ‘Contact Us’ tab.
         </p>
         <hr />
-        <h4>The Team:</h4>
-        <Row>
-          <Col className="team">
-            <Image alt="hadas" src={hadasImg} roundedCircle /> <br />
-            <strong>Hadas Sadeh,</strong>
-            <br /> Pursuing a BA in Psychology and comparative literature, Brand
-            & marketing lead of Jmeet. “I’m a huge fun of the Kardashians”
-          </Col>
-          <Col className="team">
-            <Image alt="gil" src={gilImg} roundedCircle />
-            <br />
-            <strong>Gil Shwartz,</strong>
-            <br /> B.Sc. Graduate in High-Tech Sciences, Frontend developer of
-            Jmeet. “The way to get started is to quit talking and begin doing”
-          </Col>
-        </Row>
-        <br />
-        <Row>
-          <Col className="team">
-            <Image alt="noam" src={yogaImg} roundedCircle />
-            <br />
-            <strong>Noam Del,</strong>
-            <br /> B.Sc. Graduate in High-Tech Sciences, Frontend developer of
-            Jmeet. “The way to get started is to quit talking and begin doing”
-          </Col>
-          <Col className="team">
-            <Image alt="daniel" src={yogaImg} roundedCircle />
-            <br />
-            <strong>Daniel Levin,</strong>
-            <br /> B.Sc. Graduate in High-Tech Sciences, Frontend developer of
-            Jmeet. “The way to get started is to quit talking and begin doing”
-          </Col>
-        </Row>
-        <br />
-        <Row>
-          <Col className="team">
-            <Image alt="inbar" src={yogaImg} roundedCircle />
-            <br />
-            <strong>Inbar Bob,</strong>
-            <br /> B.Sc. Graduate in High-Tech Sciences, Frontend developer of
-            Jmeet. “The way to get started is to quit talking and begin doing”
-          </Col>
-          <Col></Col>
-        </Row>
+
         <br />
       </Scrollbars>
       <div></div>

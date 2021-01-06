@@ -74,8 +74,24 @@ const IdInfo = ({
               <option value="oldkatamon">Old Katamon</option>
               <option value="nachlaot">Nachlaot</option>
               <option value="frenchhill">French Hill</option>
-              <option value="Nayot">Nayot</option>
-              <option value="Arnona">Arnona</option>
+              <option value="nayot">Nayot</option>
+              <option value="kiryatyove">Kiryat Yove</option>
+              <option value="beithakerem">Beit Hakerem</option>
+              <option value="einkarem">Ein Karem</option>
+              <option value="rasko">Rasko</option>
+              <option value="irganim">Ir Ganim</option>
+              <option value="talbiye">Talbiye</option>
+              <option value="baka">Baka</option>
+              <option value="thegermancolony">The German colony</option>
+              <option value="citycenter">City Center</option>
+              <option value="abutur">Abu Tur</option>
+              <option value="musrara">Musrara</option>
+              <option value="gilo">Gilo</option>
+              <option value="talpiyot">Talpiyot</option>
+              <option value="pisgatzeev">Pisgat Ze'ev</option>
+              <option value="ramatrachel">Ramat Rachel</option>
+              <option value="romema">Romema</option>
+              <option value="malha">Malha</option>
             </Form.Control>
           </FormLabel>
           <p style={{ fontSize: "10px", color: "red" }}>

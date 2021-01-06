@@ -9,11 +9,9 @@ const Home = () => {
     <div className="content">
       <h3>
         <strong>
-          Connect with other
+          Connect with other JLM
           <br />
-          HUJI students like
-          <br />
-          you :)
+          students like you :)
         </strong>
       </h3>
       <br />
