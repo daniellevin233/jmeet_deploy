@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("../src/images/jmeet-background.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  /* background-position-x: left; */
+}

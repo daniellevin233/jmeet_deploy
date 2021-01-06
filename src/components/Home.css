@@ -1,0 +1,26 @@
+.content {
+  margin-left: 25%;
+  margin-top: 50px;
+  margin-right: 25%;
+  width: 50%;
+  color: #2e2c2cb7;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.center {
+  margin-left: 25%;
+}
+.content-paragraph {
+  margin-top: 10px;
+  color: #2e2c2cb7;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.btn-primary {
+  margin-left: 25%;
+  margin-top: 50px;
+  color: rgb(54, 53, 53) !important;
+  background-color: rgba(245, 91, 137, 0.733) !important;
+  border-color: rgba(245, 91, 137, 0.733) !important;
+  border-radius: 30px !important;
+  padding: 4px;
+}
