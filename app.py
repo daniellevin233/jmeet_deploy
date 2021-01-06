@@ -17,12 +17,12 @@ def create_table():
     db.create_db()
 
 
-@app.route('/')
-def serve():
-    return send_from_directory(app.static_folder, 'app.js')
+# @app.route('/')
+# def serve():
+#     return send_from_directory(app.static_folder, 'app.js')
 
 
-@app.route('/signup', methods=['POST'])
+@app.route('/signup', methods=['GET', 'POST'])
 def signup():
     # data = UserSignUp.parser
     connection = sqlite3.connect('data.db')
