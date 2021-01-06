@@ -22,7 +22,7 @@ def create_table():
 #     return send_from_directory(app.static_folder, 'app.js')
 
 
-@app.route('/signup', methods=['GET', 'POST'])
+@app.route('/signup', methods=['POST'])
 def signup():
     # data = UserSignUp.parser
     connection = sqlite3.connect('data.db')
