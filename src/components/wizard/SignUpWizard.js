@@ -114,7 +114,6 @@ const SignUpWizard = () => {
     }*/
 
 	if (activeStep === steps.length - 1) {
-		setIsMatch(true);
 		const requestOptions = {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
