@@ -13,9 +13,9 @@ col_names_for_db = ['name',
                     'degree',
                     'faculty',
                     'first_major',
-                    'second_major',
                     'degree_year',
-                    'hobbies'] # todo add facetoface or leave group only
+                    'hobbies',
+                    'second_major'] # todo add facetoface or leave group only
 
 
 def load_df(csv_path):

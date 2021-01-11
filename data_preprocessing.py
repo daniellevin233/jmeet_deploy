@@ -1,3 +1,5 @@
+import sqlite3
+
 import pandas as pd
 import datetime
 
@@ -18,17 +20,38 @@ col_names_for_algo = ['name',
                       'second_major'] # todo add facetoface or leave group only
 
 
-def load_df(csv_path):
+def load_df_from_csv(csv_path):
     df = pd.read_csv(csv_path)
     # choose columns relevant for machine learning
     df_from_sql = pd.concat((df.iloc[:, 1:13], df.iloc[:, -3]), axis=1)
     df_from_sql.columns = col_names_for_algo
     return df_from_sql
 
+def load_df_from_sql():
+    connection = sqlite3.connect('data.db')
+    # cursor = connection.cursor()
+    query = '''
+    SELECT firstName,
+           lastName,
+           email,  
+           gender, 
+           age, 
+           neighborhood, 
+           degree, 
+           faculty, 
+           major, 
+           secondMajor, 
+           year, 
+           hobbies
+    FROM users;'''
+    items = pd.read_sql_query(sql=query, con=connection)
+    connection.commit()
+    connection.close()
+    return items
 
 def drop_extra_columns(df):
-    to_drop = ['name',
-               'last_name'] # todo so far no id, password and image, treat mail as unique value
+    to_drop = ['firstName',
+               'lastName'] # todo so far no id, password and image, treat mail as unique value
     return df.drop(to_drop, axis=1)
 
 
@@ -68,12 +91,9 @@ def engineer_features(df):
 
 
     # date_of_birth --> age
-    df.loc[:, 'date_of_birth'] = birth_to_age(df['date_of_birth'])
-    # today = datetime.date.today()
-    # dd_mm_yyyy_to_date = lambda birth: datetime.datetime.strptime(birth, "%d/%m/%Y")
-    # get_age = lambda born: today.year - born.year - ((today.month, today.day) < (born.month, born.day))
-    # df.loc[:, 'date_of_birth'] = df['date_of_birth'].apply(lambda birth: get_age(dd_mm_yyyy_to_date(birth)))
-    df.rename(columns={'date_of_birth': 'age'}, inplace=True)
+    # todo unnecessary because the column already contains age
+    # df.loc[:, 'date_of_birth'] = birth_to_age(df['date_of_birth'])
+    # df.rename(columns={'date_of_birth': 'age'}, inplace=True)
 
 
     # neighborhood --> one-hot
@@ -81,13 +101,13 @@ def engineer_features(df):
     # faculty --> one-hot
     # first_major --> one-hot
     # second_major --> one-hot
-    to_one_hot = ['neighborhood', 'degree', 'faculty', 'first_major', 'second_major']
+    to_one_hot = ['neighborhood', 'degree', 'faculty', 'major', 'secondMajor']
     df = pd.get_dummies(df, columns=to_one_hot)
 
 
     # degree_year --> degree_year
     # todo must be separate for MA, BA and PhD
-    df.loc[:, 'degree_year'] = df['degree_year'].apply(lambda x: x - 1)
+    df.loc[:, 'year'] = df['year'].apply(lambda x: x - 1)
     # todo not sure whether this is the best way to treat years - categorical ordinal numerical features
 
 
@@ -105,9 +125,9 @@ def engineer_features(df):
     df = df.drop(['hobbies'], axis=1)
 
 
-    # group --> binary
-    group_mapper = {'Small groups connections': 1, 'One-on-one connections': 0}
-    df.loc[:, 'group'] = df['group'].map(group_mapper)
+    # group --> binary todo get rid or keep
+    # group_mapper = {'Small groups connections': 1, 'One-on-one connections': 0}
+    # df.loc[:, 'group'] = df['group'].map(group_mapper)
 
     return df
 
@@ -115,8 +135,9 @@ def normalize(df):
     return df
 
 def prepare_for_training():
-    df = load_df('./data/quest.csv')
-    df = drop_extra_columns(df)
+    # df = load_df_from_csv('./data/quest.csv')
+    df = load_df_from_sql() # todo
+    # df = drop_extra_columns(df)
     df = engineer_features(df)
     df = normalize(df)
     # print(df.head()) # todo return initial dataframe and modified dataframe together

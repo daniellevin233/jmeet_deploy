@@ -2,6 +2,7 @@ from flask import request, jsonify
 from flask_restful import Resource, reqparse
 import sqlite3
 import security
+from users_recommender import get_recommendations
 
 
 class User:
@@ -59,12 +60,11 @@ class UserSignUp(Resource):
     #                     )
 
     def post(self):
-        # return "fuckS"
-        # # data = UserSignUp.parser
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
         request_data = request.get_json()
-        # Check user isn't already exist:
+
+        # Verify that user doesn't exist already:
         if User.find_by_mail(request_data['email']):
             return {"message": "A user with that mail already exists!"}, 400
         if not security.authorize_huji_mail(request_data['email']):
@@ -97,7 +97,11 @@ class UserSignUp(Resource):
         connection.commit()
         connection.close()
 
-        return {"message": "User signed up successfully!"}, 201
+        best_matches_data = get_recommendations(request_data['email'])
+
+        return jsonify(best_matches_data), 200
+
+        # return {"message": "User signed up successfully!"}, 201
 
     def get(self):
         return {"message": "no get"}
